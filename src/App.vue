@@ -38,6 +38,7 @@
     </v-app-bar>
 
     <v-main>
+      <MainPage/>
       <ChatBoard/>
     </v-main>
   </v-app>
@@ -45,11 +46,13 @@
 
 <script>
 import ChatBoard from './components/ChatBoard.vue'
+import MainPage from './components/MainPage.vue'
 
 export default {
   name: 'App',
   components: {
-    ChatBoard
+    ChatBoard,
+    MainPage
   }
 };
 </script>

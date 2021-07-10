@@ -1,7 +1,8 @@
 <template>
-  <v-container>
-      {{ json }}
-  </v-container>
+
+    <v-container>
+    {{ json }}
+    </v-container>
 </template>
 
 <script>
@@ -13,8 +14,7 @@
             json: {}
         }),
         created() {
-            const dbRef = firebase.database().ref("app");
-                dbRef.on('value', (snapshot) => {
+            firebase.database().ref("app").on('value', (snapshot) => {
                 this.json = snapshot.val();
             });
         }

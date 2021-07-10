@@ -1,8 +1,9 @@
 <template>
 
-    <v-container>
-    {{ json }}
-    </v-container>
+<v-container>
+
+</v-container>
+
 </template>
 
 <script>

@@ -1,9 +1,7 @@
 <template>
 
 <v-container>
-    {{ json }}
-    {{ test }}
-    <v-btn @click="testMethod"></v-btn>
+    
 </v-container>
 
 </template>

@@ -1,7 +1,9 @@
 <template>
 
 <v-container>
-
+    {{ json }}
+    {{ test }}
+    <v-btn @click="testMethod"></v-btn>
 </v-container>
 
 </template>
@@ -12,8 +14,14 @@
     export default {
         name: 'ChatBoard',
         data: () => ({
-            json: {}
+            json: {},
+            test: "てすとてすと"
         }),
+        methods: {
+            testMethod: function() {
+                this.test = "てすとてすとてすと"
+            }
+        },
         created() {
             firebase.database().ref("app").on('value', (snapshot) => {
                 this.json = snapshot.val();

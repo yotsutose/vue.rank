@@ -7,7 +7,9 @@
 @import './elevation.scss';
 
 @import './transitions.scss';
+
 <template>
+
 
 <v-container class="vcontainer">
     <div class = "header">
@@ -65,6 +67,17 @@
         <h2>オリンピック競技</h2>
             <v-row class="grey lighten-3" style="height: 60px;">        
                 <v-col style="background-color: #FFFFFF">
+                ・水泳アイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・アーチェリーアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・陸上アイコン
+                </v-col> 
+            </v-row> 
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
                 ・水泳
                 </v-col>       
                 <v-col style="background-color: #FFFFFF">
@@ -75,112 +88,222 @@
                 </v-col> 
             </v-row> 
             <v-row class="grey lighten-3" style="height: 60px;">        
-                <v-col style="background-color: #BBDEFB">
-                ・バドミントン
+                <v-col style="background-color: #FFFFFF">
+                ・バドミントンアイコン
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
-                ・野球・ソフトボール
+                <v-col style="background-color: #FFFFFF">
+                ・野球・ソフトボールアイコン
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
-                ・バスケットボール
+                <v-col style="background-color: #FFFFFF">
+                ・バスケットボールアイコン
                 </v-col> 
             </v-row> 
             <v-row class="grey lighten-3" style="height: 60px;">        
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
+                ・バドミントン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・野球・ソフトボール
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・バスケットボール
+                </v-col> 
+            </v-row>  
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
+                ・ボクシングアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・カヌーアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・自転車アイコン
+                </v-col> 
+            </v-row>
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
                 ・ボクシング
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・カヌー
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・自転車
                 </v-col> 
             </v-row>
             <v-row class="grey lighten-3" style="height: 60px;">        
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
+                ・馬術アイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・フェンシングアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・サッカーアイコン
+                </v-col> 
+            </v-row> 
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
                 ・馬術
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・フェンシング
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・サッカー
                 </v-col> 
             </v-row> 
             <v-row class="grey lighten-3" style="height: 60px;">        
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
+                ・ゴルフアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・体操アイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・ハンドボールアイコン
+                </v-col> 
+            </v-row> 
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
                 ・ゴルフ
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・体操
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・ハンドボール
                 </v-col> 
             </v-row> 
             <v-row class="grey lighten-3" style="height: 60px;">        
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
+                ・ホッケーアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・柔道アイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・空手アイコン
+                </v-col> 
+            </v-row> 
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
                 ・ホッケー
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・柔道
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・空手
                 </v-col> 
             </v-row> 
             <v-row class="grey lighten-3" style="height: 60px;">        
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
+                ・現代5種アイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・ボートアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・ラフビーアイコン
+                </v-col> 
+            </v-row> 
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
                 ・現代5種
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・ボート
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・ラフビー
                 </v-col> 
             </v-row> 
             <v-row class="grey lighten-3" style="height: 60px;">        
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
+                ・セーリングアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・射的アイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・スケートボードアイコン
+                </v-col> 
+            </v-row> 
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
                 ・セーリング
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・射的
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・スケートボード
                 </v-col> 
             </v-row> 
             <v-row class="grey lighten-3" style="height: 60px;">        
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
+                ・スポーツクライミングアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・サーフィンアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・卓球アイコン
+                </v-col> 
+            </v-row> 
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
                 ・スポーツクライミング
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・サーフィン
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・卓球
                 </v-col> 
             </v-row> 
             <v-row class="grey lighten-3" style="height: 60px;">        
-                <v-col style="background-color: #BBDEFB">
-                ・テコンドー
+                <v-col style="background-color: #FFFFFF">
+                ・テコンドーアイコン
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
-                ・テニス
+                <v-col style="background-color: #FFFFFF">
+                ・テニスアイコン
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
-                ・トライアスロン
+                <v-col style="background-color: #FFFFFF">
+                ・トライアスロンアイコン
                 </v-col> 
             </v-row> 
             <v-row class="grey lighten-3" style="height: 60px;">        
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
+                ・テコンドー
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・テニス
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・トライアスロン
+                </v-col> 
+            </v-row>  
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
+                ・バレーボールアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・ウエイトリフティングアイコン
+                </v-col>       
+                <v-col style="background-color: #FFFFFF">
+                ・レスリングアイコン
+                </v-col> 
+            </v-row>  
+            <v-row class="grey lighten-3" style="height: 60px;">        
+                <v-col style="background-color: #FFFFFF">
                 ・バレーボール
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・ウエイトリフティング
                 </v-col>       
-                <v-col style="background-color: #BBDEFB">
+                <v-col style="background-color: #FFFFFF">
                 ・レスリング
                 </v-col> 
             </v-row> 

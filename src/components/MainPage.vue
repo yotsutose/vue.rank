@@ -9,7 +9,6 @@
 @import './transitions.scss';
 <template>
 
-
 <v-container class="vcontainer">
     <div class = "header">
         <h1>最大瞬間盛数</h1>

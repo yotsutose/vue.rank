@@ -7,14 +7,16 @@
             <v-card>
                 <v-card-title>
                     <v-row>
+
                         <v-col cols="7" class = "roomName">
+
                             {{ roomName }}
                         </v-col>
                         <v-col>
                             <v-spacer></v-spacer>
                         </v-col>
                         <v-col cols="4">
-                            <v-btn color="error" block>盛り上がり!!</v-btn>
+                            <v-btn color="error" block @click="clickMoriBtn">盛り上がり!!</v-btn>
                         </v-col>
                     </v-row>
                 </v-card-title>
@@ -22,35 +24,12 @@
                 <v-container>
                     <v-row>
                         <v-col>
-                            <v-card height=200>
+                            <v-card height="875">
                                 <v-card-title>
-                                    <v-col>
-                                        点数
-                                    </v-col>
-                                    <v-col>
-                                        <v-spacer></v-spacer>
-                                    </v-col>
+                                  <v-spacer>
+                                    <LineChart :chartdata="chartData" :options="chartOptions"/>
+                                  </v-spacer>
                                 </v-card-title>
-                                <v-data-table hide-default-footer hide-default-header>
-                                </v-data-table>
-                            </v-card>
-                        </v-col>
-                    </v-row>
-                </v-container>
-                <v-container>
-                    <v-row>
-                        <v-col>
-                            <v-card height=650>
-                                <v-card-title>
-                                    <v-col>
-                                        盛り上がりグラフ
-                                    </v-col>
-                                    <v-col>
-                                        <v-spacer></v-spacer>
-                                    </v-col>
-                                </v-card-title>
-                                <v-data-table hide-default-footer hide-default-header>
-                                </v-data-table>
                             </v-card>
                         </v-col>
                     </v-row>
@@ -64,10 +43,18 @@
                         <v-col>
                             チャット
                         </v-col>
+                        <v-col>
+                            <v-spacer></v-spacer>
+                        </v-col>
+                        <v-col>
+                            <v-btn fab dark color="indigo" @click="setAutoScroll" v-if="!autoScroll" absolute>
+                                <v-icon dark>mdi-refresh</v-icon>
+                            </v-btn>
+                        </v-col>
                     </v-row>
                 </v-card-title>
                 <v-divider class="mx-4"></v-divider>
-                <v-container style="height: 820px" class="overflow-y-auto">
+                <v-container style="height: 820px" class="overflow-y-auto" id="chatBox" @wheel="cancelAutoScroll">
                     <v-row v-for="comment in comments" :key="comment.id">
                         <v-col>
                             <v-card>
@@ -76,6 +63,8 @@
                         </v-col>
                     </v-row>
                 </v-container>
+                <!-- <v-row justify="center" absolute height=200> -->
+                <!-- </v-row> -->
                 <v-row>
                     <v-col cols="1"></v-col>
                     <v-col cols="10">
@@ -100,52 +89,102 @@
 
 <script>
     import firebase from 'firebase'
+    import LineChart from './Chart.vue'
 
     export default {
         name: 'ChatBoard',
+        components: {
+          LineChart,
+        },
         data: () => ({
             json: {},
             roomId: undefined,
             roomIndex: undefined,
             roomName: '',
-            sportsName: '',
             comments: [],
             textField: '',
-            sports: [
-                "水泳", "アーチェリー", "陸上", "バドミントン", "野球・ソフトボール", "バスケットボール", "ボクシング", "カヌー", "自転車", "馬術",
-              "フェンシング", "サッカー", "ゴルフ", "体操", "ハンドボール", "ホッケー", "柔道", "空手", "近代5種", "ボート",
-              "ラグビー", "セーリング", "射撃", "スケートボード", "スポーツクライミング", "サーフィン", "卓球", "テコンドー", "テニス", "トライアスロン",
-              "バレーボール", "ウエイトリフティング", "レスリング"
-            ]
+            autoScroll: true,
+            chartData: {
+                labels: ["30分前", "29分前","28分前", "27分前","26分前", "25分前", "24分前", "23分前", "22分前", "21分前", "20分前", "19分前","18分前", "17分前","16分前", "15分前", "14分前", "13分前", "12分前", "11分前", "10分前", "9分前","8分前", "7分前", "6分前", "5分前", "4分前", "3分前", "2分前", "1分前"],
+                datasets: [
+                    {
+                        label: '盛数',
+                        data: [23, 25, 22, 20, 19, 19, 19, 20, 23,23, 25, 22, 20, 19, 19, 19, 20, 23, 23, 25, 22, 20, 19, 19, 19, 20, 23, 23, 32, 23]
+                    }
+                ],
+            },
+            chartOptions: [{
+                responsive: true,
+                maintainAspectRatio: false
+            }]
         }),
         methods: {
             submit: function() {
-                alert(this.textField)
+                if(this.textField.length > 0) {
+                    this.comments.push({comment: this.textField})
+                    firebase.database().ref('rooms/' + String(this.roomIndex) + '/comments').push({
+                        comment: this.textField,
+                        createdAt: Date.now(),
+                        weight: 1
+                    })
+                    this.textField = ''
+                } else {
+                    alert('コメントが入力されていません')
+                }
+            },
+            clickMoriBtn: function() {
                 this.comments.push({comment: this.textField})
-                // firebase.database().ref('rooms/' + String(this.roomIndex)).set({
-                // })
-                this.textField = ''
+                firebase.database().ref('rooms/' + String(this.roomIndex) + '/comments').push({
+                    comment: '',
+                    createdAt: Date.now(),
+                    weight: 1
+                })
+            },
+            setCount: function(){
+                this.count = [];
+                for(let i=0;i<30;i++) this.count.push(0);
+
+                // 現在時刻を取得
+                let now = (new Date()).getTime();
+                // 全てのcommentsを見る
+                for(let i=0;i<this.comments.length;i++){ 
+                  // 経過した分を計算
+                  let diff = (now - this.comments[i].createdAt)/60
+                  // 30分以内ならcountにweightを追加
+                  if(diff <30) this.count[diff] += this.comments[i].weight;
+                }
+            },
+            setAutoScroll: function() {
+                this.autoScroll = true;
+            },
+            cancelAutoScroll: function() {
+                this.autoScroll = false;
             }
         },
         created() {
             this.roomId = this.$route.params['id']
-            firebase.database().ref().on('value', (snapshot) => {
-                let data = snapshot.val();
-                for(let i=0; i<data.rooms.length; i++) {
-                    if(this.roomId == data.rooms[i].id) {
-                        this.roomIndex = i;
-                        this.roomName = data.rooms[i].roomName;
-                        this.sportsName = this.sports[Number(data.rooms[i].sportsId)-1]
-                        for(let j=0; j<data.rooms[i].comments.length; j++) {
-                            if(data.rooms[i].comments[j].comment != '') {
-                                this.comments.push(data.rooms[i].comments[j])
+            firebase.database().ref('rooms').on('value', (snapshot) => {
+                let rooms = snapshot.val();
+                for(let key1 in rooms) {
+                    if(rooms[key1].id == this.roomId) {
+                        const room = rooms[key1]
+                        this.roomIndex = key1
+                        this.roomName = room.roomName
+                        this.comments = []
+                        for(let key2 in room.comments) {
+                            if(room.comments[key2].comment != '') {
+                                this.comments.push(room.comments[key2])
                             }
                         }
-                        break;
                     }
                 }
-
-            });
+            })
+            document.getElementById('chatBox').scrollTo(0, document.getElementById('chatBox').scrollHeight)            
+        },
+        updated() {
+            if(this.autoScroll) {
+                document.getElementById('chatBox').scrollTo(0, document.getElementById('chatBox').scrollHeight)
+            }
         }
     }
 </script>

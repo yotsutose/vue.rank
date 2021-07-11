@@ -38,21 +38,16 @@
     </v-app-bar>
 
     <v-main>
-      <MainPage/>
-      <ChatBoard/>
+      <router-view></router-view>
     </v-main>
   </v-app>
 </template>
 
 <script>
-import ChatBoard from './components/ChatBoard.vue'
-import MainPage from './components/MainPage.vue'
 
 export default {
   name: 'App',
   components: {
-    ChatBoard,
-    MainPage
   }
 };
 </script>

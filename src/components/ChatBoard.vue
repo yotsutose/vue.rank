@@ -7,13 +7,13 @@
             <v-card>
                 <v-card-title>
                     <v-row>
-                        <v-col>
+                        <v-col cols="7">
                             {{ roomName }} / {{ sportsName }}
                         </v-col>
                         <v-col>
                             <v-spacer></v-spacer>
                         </v-col>
-                        <v-col>
+                        <v-col cols="4">
                             <v-btn color="error" block>盛り上がり!!</v-btn>
                         </v-col>
                     </v-row>
@@ -81,10 +81,10 @@
                     <v-col cols="10">
                         <v-row>
                             <v-col cols="10">
-                                <v-text-field></v-text-field>
+                                <v-text-field v-model="textField"></v-text-field>
                             </v-col>
                             <v-col cols="2">
-                                <v-btn fab dark color="indigo">
+                                <v-btn fab dark color="indigo" @click="submit">
                                     <v-icon dark>mdi-send</v-icon>
                                 </v-btn>
                             </v-col>
@@ -105,10 +105,12 @@
         name: 'ChatBoard',
         data: () => ({
             json: {},
-            roomId: 1,
+            roomId: undefined,
+            roomIndex: undefined,
             roomName: '',
-            sportsName: 0,
+            sportsName: '',
             comments: [],
+            textField: '',
             sports: [
                 "水泳", "アーチェリー", "陸上", "バドミントン", "野球・ソフトボール", "バスケットボール", "ボクシング", "カヌー", "自転車", "馬術",
               "フェンシング", "サッカー", "ゴルフ", "体操", "ハンドボール", "ホッケー", "柔道", "空手", "近代5種", "ボート",
@@ -117,12 +119,21 @@
             ]
         }),
         methods: {
+            submit: function() {
+                alert(this.textField)
+                this.comments.push({comment: this.textField})
+                // firebase.database().ref('rooms/' + String(this.roomIndex)).set({
+                // })
+                this.textField = ''
+            }
         },
         created() {
+            this.roomId = this.$route.params['id']
             firebase.database().ref().on('value', (snapshot) => {
                 let data = snapshot.val();
                 for(let i=0; i<data.rooms.length; i++) {
                     if(this.roomId == data.rooms[i].id) {
+                        this.roomIndex = i;
                         this.roomName = data.rooms[i].roomName;
                         this.sportsName = this.sports[Number(data.rooms[i].sportsId)-1]
                         for(let j=0; j<data.rooms[i].comments.length; j++) {

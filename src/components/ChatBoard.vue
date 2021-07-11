@@ -7,8 +7,8 @@
             <v-card>
                 <v-card-title>
                     <v-row>
-                        <v-col cols="7">
-                            {{ roomName }} / {{ sportsName }}
+                        <v-col cols="7" class = "roomName">
+                            {{ roomName }}
                         </v-col>
                         <v-col>
                             <v-spacer></v-spacer>
@@ -150,3 +150,9 @@
     }
 </script>
 
+<style scoped>
+.roomName{
+    font-size: 40px;
+    font-family: "Arial Black";
+}
+</style>

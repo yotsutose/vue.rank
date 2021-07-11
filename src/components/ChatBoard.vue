@@ -22,12 +22,12 @@
                 <v-container>
                     <v-row>
                         <v-col>
-                            <v-card height=875>
+                            <v-card height="875">
                                 <v-card-title>
                                   <v-spacer>
-                                          <LineChart></LineChart>
-                                          </v-spacer>
-                                  </v-card-title>
+                                    <LineChart :chartdata="chartData" :options="chartOptions"/>
+                                  </v-spacer>
+                                </v-card-title>
                             </v-card>
                         </v-col>
                     </v-row>
@@ -101,7 +101,20 @@
             roomName: '',
             comments: [],
             textField: '',
-            autoScroll: true
+            autoScroll: true,
+            chartData: {
+                labels: ["30分前", "29分前","28分前", "27分前","26分前", "25分前", "24分前", "23分前", "22分前", "21分前", "20分前", "19分前","18分前", "17分前","16分前", "15分前", "14分前", "13分前", "12分前", "11分前", "10分前", "9分前","8分前", "7分前", "6分前", "5分前", "4分前", "3分前", "2分前", "1分前"],
+                datasets: [
+                    {
+                        label: '盛数',
+                        data: [23, 25, 22, 20, 19, 19, 19, 20, 23,23, 25, 22, 20, 19, 19, 19, 20, 23, 23, 25, 22, 20, 19, 19, 19, 20, 23, 23, 32, 23]
+                    }
+                ],
+            },
+            chartOptions: [{
+                responsive: true,
+                maintainAspectRatio: false
+            }]
         }),
         methods: {
             submit: function() {

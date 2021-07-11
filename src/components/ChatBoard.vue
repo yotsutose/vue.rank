@@ -24,12 +24,10 @@
                 <v-container>
                     <v-row>
                         <v-col>
-                            <v-card height="875">
-                                <v-card-title>
-                                  <v-spacer>
+                            <v-card height="800">
+                                <v-card-text style="height: 800px">
                                     <LineChart :chartdata="chartData" :options="chartOptions"/>
-                                  </v-spacer>
-                                </v-card-title>
+                                </v-card-text>
                             </v-card>
                         </v-col>
                     </v-row>
@@ -54,7 +52,7 @@
                     </v-row>
                 </v-card-title>
                 <v-divider class="mx-4"></v-divider>
-                <v-container style="height: 820px" class="overflow-y-auto" id="chatBox" @wheel="cancelAutoScroll">
+                <v-container style="height: 820px" class="overflow-y-auto" id="chatBox" @wheel="cancelAutoScroll" @click="getData">
                     <v-row v-for="comment in comments" :key="comment.id">
                         <v-col>
                             <v-card>
@@ -63,8 +61,6 @@
                         </v-col>
                     </v-row>
                 </v-container>
-                <!-- <v-row justify="center" absolute height=200> -->
-                <!-- </v-row> -->
                 <v-row>
                     <v-col cols="1"></v-col>
                     <v-col cols="10">
@@ -109,7 +105,7 @@
                 datasets: [
                     {
                         label: '盛数',
-                        data: [23, 25, 22, 20, 19, 19, 19, 20, 23,23, 25, 22, 20, 19, 19, 19, 20, 23, 23, 25, 22, 20, 19, 19, 19, 20, 23, 23, 32, 23]
+                        data: [20, 25, 22, 20, 19, 19, 19, 20, 23,23, 25, 22, 20, 19, 19, 19, 20, 23, 23, 25, 22, 20, 19, 19, 19, 20, 23, 23, 32, 23]
                     }
                 ],
             },
@@ -159,6 +155,20 @@
             },
             cancelAutoScroll: function() {
                 this.autoScroll = false;
+            },
+            getData: function() {
+                const request = new XMLHttpRequest();
+                request.open('GET', "https://kdg-hacks-team-d-api.herokuapp.com/ranks/get", true);
+                request.responseType = 'json';
+                const roomId = this.roomId;
+                request.onload = function() {
+                    console.log(roomId);
+                    const data = this.response;
+                    for(let i=0; i<data.length; i++) {
+                        console.log(data[i][0]);
+                    }
+                }
+                request.send();
             }
         },
         created() {
@@ -179,12 +189,17 @@
                     }
                 }
             })
-            document.getElementById('chatBox').scrollTo(0, document.getElementById('chatBox').scrollHeight)            
+            window.setInterval(function() {
+                console.log(this.autoScroll);
+            }, 1000);
+            document.getElementById('chatBox').scrollTo(0, document.getElementById('chatBox').scrollHeight)
         },
         updated() {
             if(this.autoScroll) {
                 document.getElementById('chatBox').scrollTo(0, document.getElementById('chatBox').scrollHeight)
             }
+        },
+        mounted() {
         }
     }
 </script>

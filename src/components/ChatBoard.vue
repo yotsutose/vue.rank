@@ -7,7 +7,9 @@
             <v-card>
                 <v-card-title>
                     <v-row>
-                        <v-col cols="7">
+
+                        <v-col cols="7" class = "roomName">
+
                             {{ roomName }}
                         </v-col>
                         <v-col>
@@ -202,3 +204,9 @@
     }
 </script>
 
+<style scoped>
+.roomName{
+    font-size: 40px;
+    font-family: "Arial Black";
+}
+</style>

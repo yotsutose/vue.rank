@@ -22,32 +22,12 @@
                 <v-container>
                     <v-row>
                         <v-col>
-                            <v-card height=200>
-                                <v-card-title>
-                                    <v-col>
-                                        点数
-                                    </v-col>
-                                    <v-col>
-                                        <v-spacer></v-spacer>
-                                    </v-col>
-                                </v-card-title>
-                                <v-data-table hide-default-footer hide-default-header>
-                                </v-data-table>
-                            </v-card>
-                        </v-col>
-                    </v-row>
-                </v-container>
-                <v-container>
-                    <v-row>
-                        <v-col>
-                            <v-card height=650>
+                            <v-card height=875>
                                 <v-card-title>
                                   <v-spacer>
                                           <LineChart></LineChart>
                                           </v-spacer>
                                   </v-card-title>
-                                <v-data-table hide-default-footer hide-default-header>
-                                </v-data-table>
                             </v-card>
                         </v-col>
                     </v-row>

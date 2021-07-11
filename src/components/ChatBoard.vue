@@ -42,13 +42,10 @@
                         <v-col>
                             <v-card height=650>
                                 <v-card-title>
-                                    <v-col>
-                                        盛り上がりグラフ
-                                    </v-col>
-                                    <v-col>
-                                        <v-spacer></v-spacer>
-                                    </v-col>
-                                </v-card-title>
+                                  <v-spacer>
+                                          <LineChart></LineChart>
+                                          </v-spacer>
+                                  </v-card-title>
                                 <v-data-table hide-default-footer hide-default-header>
                                 </v-data-table>
                             </v-card>
@@ -100,9 +97,13 @@
 
 <script>
     import firebase from 'firebase'
+    import LineChart from './Chart.vue'
 
     export default {
         name: 'ChatBoard',
+        components: {
+          LineChart,
+        },
         data: () => ({
             json: {},
             roomId: undefined,
@@ -125,7 +126,21 @@
                 // firebase.database().ref('rooms/' + String(this.roomIndex)).set({
                 // })
                 this.textField = ''
+            },
+            setCount: function(){
+            this.count = [];
+            for(let i=0;i<30;i++) this.count.push(0);
+
+            // 現在時刻を取得
+            let now = (new Date()).getTime();
+            // 全てのcommentsを見る
+            for(let i=0;i<this.comments.length;i++){ 
+              // 経過した分を計算
+              let diff = (now - this.comments[i].createdAt)/60
+              // 30分以内ならcountにweightを追加
+              if(diff <30) this.count[diff] += this.comments[i].weight;
             }
+          }
         },
         created() {
             this.roomId = this.$route.params['id']

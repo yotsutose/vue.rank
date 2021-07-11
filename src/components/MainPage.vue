@@ -11,8 +11,6 @@
 <template>
   <v-container class="vcontainer">
     <div class="header">
-    <img src="../assets/TOKYO.png"  alt="" class="TOKYO">
-    <img src="../assets/Olym3.png" alt="" class="Olym">
       <h1>最大瞬間盛数</h1>
       <div class="icon chart">
         <i></i>
@@ -124,8 +122,11 @@ export default {
         data: () => ({
             "rank":[],
             "sports": null,
-            "icons": icons
+            "icons": icons,
             }),
+        computed:{
+            
+        },
         method:{
             Reload : function(){
                 this.rank = [],

@@ -1,4 +1,4 @@
-# 2021-summer-d-team 2021-summer-d-team
+# vue.rank
 
 ## Project setup
 ```
